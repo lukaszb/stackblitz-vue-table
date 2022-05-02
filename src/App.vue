@@ -1,31 +1,31 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { ref } from 'vue';
-import Table from './components/Table.vue';
-import Column from './components/Column.vue';
+import { ref } from "vue";
+import Table from "./components/Table.vue";
+import Column from "./components/Column.vue";
 
 const data = [
   {
-    id: '1',
-    name: 'Kate Brown',
+    id: "1",
+    name: "Kate Brown",
     age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
+    address: "New York No. 1 Lake Park",
+    tags: ["nice", "developer"],
   },
   {
-    id: '2',
-    name: 'Jane Doe',
+    id: "2",
+    name: "Jane Doe",
     age: 34,
-    address: 'London No. 1 Lake Park',
-    tags: ['engineer'],
+    address: "London No. 1 Lake Park",
+    tags: ["engineer"],
   },
   {
-    id: '3',
-    name: 'Joe Black',
+    id: "3",
+    name: "Joe Black",
     age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
   },
 ];
 </script>
@@ -33,15 +33,20 @@ const data = [
 <template>
   <h3>Table:</h3>
   <Table :data="data">
-    <Column title="id">
+    <Column header="id">
       <template v-slot="{ item }">
         {{ item.id }}
       </template>
     </Column>
     <Column>
-      <template #title><strong>Name</strong></template>
+      <template #header><strong>Name</strong></template>
       <template v-slot="{ item }">
         {{ item.name }}
+      </template>
+    </Column>
+    <Column header="Address">
+      <template v-slot="{ item }">
+        {{ item.address }}
       </template>
     </Column>
   </Table>
@@ -66,7 +71,6 @@ const data = [
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
